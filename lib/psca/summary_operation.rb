@@ -1,17 +1,17 @@
-module IPS
+module PSCA
   class SummaryOperation < Inferno::TestGroup
     title 'Summary Operation Tests'
     description %(
         Verify support for the $summary operation as as described in the [IPS
         Guidance](http://hl7.org/fhir/uv/ips/STU1.1/ipsGeneration.html).
     )
-    id :ips_summary_operation
+    id :psca_summary_operation
     run_as_group
 
     test do
-      title 'IPS Server declares support for $summary operation in CapabilityStatement'
+      title 'Server declares support for $summary operation in CapabilityStatement'
       description %(
-        The IPS Server declares support for Patient/[id]/$summary operation in its server CapabilityStatement
+        The Server declares support for Patient/[id]/$summary operation in its server CapabilityStatement
       )
 
       run do
@@ -34,9 +34,9 @@ module IPS
     end
 
     test do
-      title 'IPS Server returns Bundle resource for Patient/[id]/$summary GET operation'
+      title 'Server returns Bundle resource for Patient/[id]/$summary GET operation'
       description %(
-        IPS Server returns a valid IPS Bundle resource as successful result of
+        Server returns a valid PS-CA Bundle resource as successful result of
         $summary operation.
 
         This test currently only issues a GET request for the summary due to a
@@ -56,16 +56,16 @@ module IPS
         fhir_operation("Patient/#{patient_id}/$summary", name: :summary_operation, operation_method: :get)
         assert_response_status(200)
         assert_resource_type(:bundle)
-        assert_valid_resource(profile_url: 'http://hl7.org/fhir/uv/ips/StructureDefinition/Bundle-uv-ips')
+        assert_valid_resource(profile_url: 'http://fhir.infoway-inforoute.ca/io/psca/StructureDefinition/bundle-ca-ps')
       end
     end
 
     test do
-      title 'IPS Server returns Bundle resource containing valid IPS Composition entry'
+      title 'Server returns Bundle resource containing valid PS-CA Composition entry'
       description %(
-        IPS Server return valid IPS Composition resource in the Bundle as first entry
+        Server return valid PS-CA Composition resource in the Bundle as first entry
       )
-      # link 'http://hl7.org/fhir/uv/ips/StructureDefinition-Composition-uv-ips.html'
+      # link 'https://simplifier.net/guide/ps-ca/Home/FHIR-Artifacts/CompositionPS-CA?version=1.1.0-DFT'
       uses_request :summary_operation
 
       run do
@@ -76,16 +76,16 @@ module IPS
         first_resource = resource.entry.first.resource
 
         assert first_resource.is_a?(FHIR::Composition), 'The first entry in the Bundle is not a Composition'
-        assert_valid_resource(resource: first_resource, profile_url: 'http://hl7.org/fhir/uv/ips/StructureDefinition/Composition-uv-ips')
+        assert_valid_resource(resource: first_resource, profile_url: 'http://fhir.infoway-inforoute.ca/io/psca/StructureDefinition/composition-ca-ps')
       end
     end
 
     test do
-      title 'IPS Server returns Bundle resource containing valid IPS MedicationStatement entry'
+      title 'Server returns Bundle resource containing valid PS-CA MedicationStatement entry'
       description %(
-        IPS Server return valid IPS MedicationStatement resource in the Bundle as first entry
+        Server return valid PS-CA MedicationStatement resource in the Bundle as first entry
       )
-      # link 'http://hl7.org/fhir/uv/ips/StructureDefinition-MedicationStatement-uv-ips.html'
+      # link 'https://simplifier.net/guide/ps-ca/Home/FHIR-Artifacts/MedicationStatementPS-CA?version=1.1.0-DFT'
       uses_request :summary_operation
 
       run do
@@ -97,18 +97,18 @@ module IPS
 
         assert_valid_bundle_entries(
           resource_types: {
-            medication_statement: 'http://hl7.org/fhir/uv/ips/StructureDefinition/MedicationStatement-uv-ips'
+            medication_statement: 'http://fhir.infoway-inforoute.ca/io/psca/StructureDefinition/medicationstatement-ca-ps'
           }
         )
       end
     end
 
     test do
-      title 'IPS Server returns Bundle resource containing valid IPS AllergyIntolerance entry'
+      title 'Server returns Bundle resource containing valid PS-CA AllergyIntolerance entry'
       description %(
-        IPS Server return valid IPS AllergyIntolerance resource in the Bundle as first entry
+        Server return valid PS-CA AllergyIntolerance resource in the Bundle as first entry
       )
-      # link 'http://hl7.org/fhir/uv/ips/StructureDefinition-AllergyIntolerance-uv-ips.html'
+      # link 'https://simplifier.net/guide/ps-ca/Home/FHIR-Artifacts/AllergyIntolerancePS-CA?version=1.1.0-DFT'
       uses_request :summary_operation
 
       run do
@@ -120,18 +120,18 @@ module IPS
 
         assert_valid_bundle_entries(
           resource_types: {
-            allergy_intolerance: 'http://hl7.org/fhir/uv/ips/StructureDefinition/AllergyIntolerance-uv-ips'
+            allergy_intolerance: 'http://fhir.infoway-inforoute.ca/io/psca/StructureDefinition/allergyintolerance-ca-ps'
           }
         )
       end
     end
 
     test do
-      title 'IPS Server returns Bundle resource containing valid IPS Condition entry'
+      title 'Server returns Bundle resource containing valid PS-CA Condition entry'
       description %(
-        IPS Server return valid IPS Condition resource in the Bundle as first entry
+        Server return valid PS-CA Condition resource in the Bundle as first entry
       )
-      # link 'http://hl7.org/fhir/uv/ips/StructureDefinition-Condition-uv-ips.html'
+      # link 'https://simplifier.net/guide/ps-ca/Home/FHIR-Artifacts/ConditionPS-CA?version=1.1.0-DFT'
       uses_request :summary_operation
 
       run do
@@ -143,7 +143,7 @@ module IPS
 
         assert_valid_bundle_entries(
           resource_types: {
-            condition: 'http://hl7.org/fhir/uv/ips/StructureDefinition/Condition-uv-ips'
+            condition: 'http://fhir.infoway-inforoute.ca/io/psca/StructureDefinition/condition-ca-ps'
           }
         )
       end

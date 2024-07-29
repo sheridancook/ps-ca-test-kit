@@ -1,15 +1,15 @@
-module IPS
+module PSCA
   class Bundle < Inferno::TestGroup
-    title 'Bundle (IPS) Tests'
-    description 'Verify support for the server capabilities required by the Bundle (IPS) profile.'
-    id :ips_bundle
+    title 'Bundle (PS-CA) Tests'
+    description 'Verify support for the server capabilities required by the Bundle (PS-CA) profile.'
+    id :psca_bundle
 
     test do
       title 'Server returns correct Bundle resource from the Bundle read interaction'
       description %(
         This test will verify that Bundle resources can be read from the server.
       )
-      # link 'http://hl7.org/fhir/uv/ips/StructureDefinition/Bundle-uv-ips'
+      # link 'https://simplifier.net/guide/ps-ca/Home/FHIR-Artifacts/BundlePS-CA?version=1.1.0-DFT'
 
       input :bundle_id
       makes_request :bundle
@@ -25,15 +25,15 @@ module IPS
     end
 
     test do
-      title 'Server returns Bundle resource that matches the Bundle (IPS) profile'
+      title 'Server returns Bundle resource that matches the Bundle (PS-CA) profile'
       description %(
-        This test will validate that the Bundle resource returned from the server matches the Bundle (IPS) profile.
+        This test will validate that the Bundle resource returned from the server matches the Bundle (PS-CA) profile.
       )
-      # link 'http://hl7.org/fhir/uv/ips/StructureDefinition/Bundle-uv-ips'
+      # link 'https://simplifier.net/guide/ps-ca/Home/FHIR-Artifacts/BundlePS-CA?version=1.1.0-DFT'
       uses_request :bundle
 
       run do
-        assert_valid_resource(profile_url: 'http://hl7.org/fhir/uv/ips/StructureDefinition/Bundle-uv-ips')
+        assert_valid_resource(profile_url: 'http://fhir.infoway-inforoute.ca/io/psca/StructureDefinition/bundle-ca-ps')
       end
     end
   end

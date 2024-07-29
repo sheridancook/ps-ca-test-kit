@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ips_test_kit (0.10.1)
+    psca_test_kit (0.10.1)
       inferno_core (>= 0.4.37)
 
 GEM
@@ -288,7 +288,7 @@ DEPENDENCIES
   database_cleaner-sequel (~> 1.8)
   debug
   factory_bot (~> 6.1)
-  ips_test_kit!
+  psca_test_kit!
   rspec (~> 3.10)
   webmock (~> 3.11)
 

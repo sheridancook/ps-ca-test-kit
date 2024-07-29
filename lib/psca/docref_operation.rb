@@ -1,4 +1,4 @@
-module IPS
+module PSCA
   class DocRefOperation < Inferno::TestGroup
     title 'DocRef Operation Tests'
 
@@ -9,14 +9,14 @@ module IPS
         Note that this currently does not request an IPS bundle specifically
         therefore does not validate the content.
     )
-    id :ips_docref_operation
+    id :psca_docref_operation
     run_as_group
     optional
 
     test do
-      title 'IPS Server declares support for $docref operation in CapabilityStatement'
+      title 'Server declares support for $docref operation in CapabilityStatement'
       description %(
-        The IPS Server declares support for DocumentReference/$docref operation in its server CapabilityStatement
+        The Server declares support for DocumentReference/$docref operation in its server CapabilityStatement
       )
       # link 'http://build.fhir.org/composition-operation-document.html'
 

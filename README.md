@@ -1,14 +1,14 @@
-# Inferno IPS Test Kit
+# Inferno PS-CA Test Kit
 
-The Inferno International Patient Summary Test Kit provides an
-executable set of tests for the [International Patient Summary (IPS)
-Implementation Guide](https://build.fhir.org/ig/HL7/fhir-ips/).  This test kit
-is designed and maintained by the Inferno team to support the development of the
-IPS IG and improve the core Inferno Framework.
+The Inferno Pan-Canadian Patient Summary Test Kit provides an
+executable set of tests for the [Pan-Canadian Patient Summary (PS-CA)
+Implementation Guide](https://simplifier.net/guide/ps-ca?version=current).  This test kit
+is designed and maintained by the Infoway to support the development of the
+PS-CA IG.
 
 This test kit includes a web interface to run a configured local [HL7® FHIR®
 validator](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator)
-service to validate instances of FHIR resources to the IPS profiles, as well as
+service to validate instances of FHIR resources to the PS-CA profiles, as well as
 a preliminary test suite.
 
 ## Instructions

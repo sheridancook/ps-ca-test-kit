@@ -1,8 +1,8 @@
-module IPS
+module PSCA
   class ObservationResults < Inferno::TestGroup
-    title 'Observation Results (IPS) Tests'
-    description 'Verify support for the server capabilities required by the Observation Results (IPS) profile.'
-    id :ips_observation_results
+    title 'Observation Results (PS-CA) Tests'
+    description 'Verify support for the server capabilities required by the Observation Results (PS-CA) profile.'
+    id :psca_observation_results
 
     input :observation_results_id
 
@@ -11,7 +11,7 @@ module IPS
       description %(
         This test will verify that Observation resources can be read from the server.
       )
-      # link 'http://hl7.org/fhir/uv/ips/StructureDefinition/Observation-results-uv-ips'
+      # link 'https://simplifier.net/ps-ca-r1/observationresultspsca'
       makes_request :observation
 
       run do
@@ -25,15 +25,15 @@ module IPS
     end
 
     test do
-      title 'Server returns Observation resource that matches the Observation Results (IPS) profile'
+      title 'Server returns Observation resource that matches the Observation Results (PS-CA) profile'
       description %(
-        This test will validate that the Observation resource returned from the server matches the Observation Results (IPS) profile.
+        This test will validate that the Observation resource returned from the server matches the Observation Results (PS-CA) profile.
       )
-      # link 'http://hl7.org/fhir/uv/ips/StructureDefinition/Observation-results-uv-ips'
+      # link 'https://simplifier.net/ps-ca-r1/observationresultspsca'
       uses_request :observation
 
       run do
-        assert_valid_resource(profile_url: 'http://hl7.org/fhir/uv/ips/StructureDefinition/Observation-results-uv-ips')
+        assert_valid_resource(profile_url: 'http://fhir.infoway-inforoute.ca/io/psca/StructureDefinition/observation-results-ca-ps')
       end
     end
   end

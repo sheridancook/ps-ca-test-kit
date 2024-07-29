@@ -1,8 +1,8 @@
-module IPS
+module PSCA
   class MedicationStatement < Inferno::TestGroup
-    title 'Medication Statement (IPS) Tests'
-    description 'Verify support for the server capabilities required by the Medication Statement (IPS) profile.'
-    id :ips_medication_statement
+    title 'Medication Statement (PS-CA) Tests'
+    description 'Verify support for the server capabilities required by the Medication Statement (PS-CA) profile.'
+    id :psca_medication_statement
 
     input :medication_statement_id
 
@@ -11,7 +11,7 @@ module IPS
       description %(
         This test will verify that MedicationStatement resources can be read from the server.
       )
-      # link 'http://hl7.org/fhir/uv/ips/StructureDefinition/MedicationStatement-uv-ips'
+      # link 'https://simplifier.net/guide/ps-ca/Home/FHIR-Artifacts/MedicationStatementPS-CA?version=1.1.0-DFT'
       makes_request :medication_statement
 
       run do
@@ -25,15 +25,15 @@ module IPS
     end
 
     test do
-      title 'Server returns MedicationStatement resource that matches the Medication Statement (IPS) profile'
+      title 'Server returns MedicationStatement resource that matches the Medication Statement (PS-CA) profile'
       description %(
-        This test will validate that the MedicationStatement resource returned from the server matches the Medication Statement (IPS) profile.
+        This test will validate that the MedicationStatement resource returned from the server matches the Medication Statement (PS-CA) profile.
       )
-      # link 'http://hl7.org/fhir/uv/ips/StructureDefinition/MedicationStatement-uv-ips'
+      # link 'https://simplifier.net/guide/ps-ca/Home/FHIR-Artifacts/MedicationStatementPS-CA?version=1.1.0-DFT'
       uses_request :medication_statement
 
       run do
-        assert_valid_resource(profile_url: 'http://hl7.org/fhir/uv/ips/StructureDefinition/MedicationStatement-uv-ips')
+        assert_valid_resource(profile_url: 'http://fhir.infoway-inforoute.ca/io/psca/StructureDefinition/medicationstatement-ca-ps')
       end
     end
   end
